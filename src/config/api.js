@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const req = axios.create({
-  baseURL: '/oklink',
+  baseURL: 'https://www.oklink.com/oklink',
   headers: {
     'Ok-Access-Key': 'b808c04f-37cd-47fd-aac8-8ffaf8a7c34c',
   },
