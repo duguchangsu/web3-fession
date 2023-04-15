@@ -12,7 +12,7 @@ function createMenuItem({ key, label, icon }) {
 }
 
 const SideMenu = ({ routes }) => {
-  return <Menu mode="inline" theme="dark" style={{ height: '100vh' }}>
+  return <Menu mode="inline" style={{ height: '100vh' }}>
     {routes.map((route) => {
       if (route.children) {
         return (

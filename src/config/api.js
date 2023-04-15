@@ -7,11 +7,9 @@ const req = axios.create({
   },
 });
 
-req.interceptors.response.use(function (response) {
-  return response.data.data[0];
-}, function (error) {
-  return Promise.reject(error);
-});
+req.interceptors.response.use(
+  (response) => response.data.data[0],
+  (error) => Promise.reject(error),
+);
 
-
-export default req
+export default req;

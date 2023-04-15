@@ -3,12 +3,12 @@ import useSWR from 'swr';
 
 function usePaginationSWR(url, fetcher, options) {
   const limit = 20;
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const { data, error, mutate } = useSWR(`${url}?page=${currentPage}&limit=${limit}`, fetcher, {
     ...options,
   });
 
-  function onPageChange(page: number) {
+  function onPageChange(page) {
     setCurrentPage(page);
   }
 

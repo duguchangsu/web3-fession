@@ -1,8 +1,10 @@
 import React from 'react'
-
+import PriceChart from '../../features/Price'
 function AboutPage() {
   return (
-    <div>AboutPage</div>
+    <div>
+      <PriceChart></PriceChart>
+    </div>
   )
 }
 

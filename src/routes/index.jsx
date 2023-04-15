@@ -1,7 +1,7 @@
 export const routes = [
     {
         key: '/',
-        label: 'Home',
+        label: '区块列表',
         // icon: <HomeOutlined />,
         component: () => import('../pages/Home'),
     },

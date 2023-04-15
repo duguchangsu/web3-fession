@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import { Layout, Spin } from "antd";
 import SideMenu from "../components/SideMenu";
+import MyHeader from "../components/Header";
 import { routes } from "../routes";
 
 const { Content, Sider } = Layout;
@@ -49,30 +50,15 @@ function renderRoutes(routes) {
   });
 }
 const LayoutWarp = () => {
-
-
-  <Router>
-    <div style={{ display: 'flex' }}>
-      <SideMenu routes={routes}></SideMenu>
-
-      <div style={{ flexGrow: 1 }}>
-        <Routes>
-          {renderRoutes(routes)}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-    </div>
-  </Router>
-
-
   return (
     <Router pathname="/">
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider>
-          <SideMenu routes={routes}></SideMenu>
-        </Sider>
-        <Layout >
-          <Content style={{ margin: '16px', width: "calc(100vw - 200px)" }}>
+      <Layout >
+        <MyHeader />
+        <Layout style={{ minHeight: 'calc(100vh - 64px)' }} >
+          <Sider>
+            <SideMenu routes={routes}></SideMenu>
+          </Sider>
+          <Content style={{ margin: '16px', width: "calc(100vw - 232px)" }}>
             <Routes>
               {renderRoutes(routes)}
               <Route path="*" element={<NotFound />} />
