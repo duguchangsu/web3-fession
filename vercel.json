@@ -1,0 +1,14 @@
+{
+    "name": "realwds-api",
+    "version": 2,
+    "routes": [
+      {
+        "src": "/oklink",
+        "headers": {
+          "cache-control": "no-cache, no-store, must-revalidate",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "dest": "https://www.oklink.com/api/v5/explorer"
+      }
+    ]
+  }
