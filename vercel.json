@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "https://www.oklink.com/api/(.*)",
+      "source": "https://www.oklink.com/",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
