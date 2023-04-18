@@ -1,34 +1,50 @@
 export const routes = [
     {
-        key: '/',
-        label: '区块列表',
-        // icon: <HomeOutlined />,
-        component: () => import('../pages/Home'),
-    },
-    {
-        key: '/about',
-        label: 'About',
-        // icon: <InfoCircleOutlined />,
-        component: () => import('../pages/About'),
+        key: '/list',
+        label: '列表',
         children: [
             {
-                key: '/about/index',
-                label: 'AboutPage',
-                exact: true, // 此处添加了 exact 属性
-                component: () => import('../pages/AboutPage'),
+                key: '/list/block',
+                label: '区块列表',
+                component: () => import('../pages/List/Block'),
             },
             {
-                key: '/about/team',
-                label: 'Team',
-                exact: true, // 此处添加了 exact 属性
-                component: () => import('../pages/Team'),
+                key: '/list/transaction',
+                label: '交易列表',
+                component: () => import('../pages/List/transaction'),
             },
             {
-                key: '/about/history',
-                label: 'History',
+                key: '/list/richAddress',
+                label: '富豪地址',
+                component: () => import('../pages/List/RichAddress'),
+            },
+            {
+                key: '/list/largeTransaction',
+                label: '大额交易',
+                component: () => import('../pages/List/LargeTransaction'),
+            }
+        ]
+    },
+    {
+        key: '/contract',
+        label: '312312',
+        component: () => import('../pages/Contact'),
+    },
+    {
+        key: '/chart',
+        label: '可视化图',
+        children: [
+            {
+                key: '/chart/gas',
+                label: 'Gas相关',
                 exact: true, // 此处添加了 exact 属性
-                component: () => import('../pages/History'),
+                component: () => import('../pages/Chart/Gas'),
             },
         ],
+    },
+    {
+        key: '/my',
+        label: '我的',
+        component: () => import('../pages/My'),
     },
 ];

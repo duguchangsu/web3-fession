@@ -54,11 +54,11 @@ const LayoutWarp = () => {
     <Router pathname="/">
       <Layout >
         <MyHeader />
-        <Layout style={{ minHeight: 'calc(100vh - 64px)' }} >
+        <Layout style={{ minHeight: 'calc(100vh - 64px)',backgroundColor: '#fff',}} >
           <Sider>
             <SideMenu routes={routes}></SideMenu>
           </Sider>
-          <Content style={{ margin: '16px', width: "calc(100vw - 232px)" }}>
+          <Content style={{  margin: '16px', width: "calc(100vw - 232px)" }}>
             <Routes>
               {renderRoutes(routes)}
               <Route path="*" element={<NotFound />} />

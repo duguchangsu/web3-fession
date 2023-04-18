@@ -9,7 +9,7 @@ const req = axios.create({
 });
 
 req.interceptors.response.use(
-  (response) => response.data.data[0],
+  (response) => response.data.data,
   (error) => Promise.reject(error),
 );
 

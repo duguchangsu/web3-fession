@@ -1,9 +1,9 @@
 import React from 'react'
 import BlockList from '../../features/BlockList'
-function Home() {
+function Block() {
   return (
     <div><BlockList /></div>
   )
 }
 
-export default Home
+export default Block

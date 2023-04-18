@@ -8,7 +8,7 @@ import { getFetcher } from "../config/fetcher";
 import { Segmented, Row, Col } from 'antd';
 
 
-const PriceChart = () => {
+const GasChart = () => {
     const [date, setDate] = useState(7);
 
     const { data, isLoading, mutate } = useSWR(`/deflation/gas?limit=${date}`, (url) =>
@@ -23,14 +23,10 @@ const PriceChart = () => {
     }
 
     const option = {
-        title: {
-            left: 'center',
-            text: 'ETH的gas历史',
-        },
         grid: {
             left: '3%',
             right: '4%',
-            bottom: '3%',
+            bottom: '20px',
             containLabel: true
         },
         xAxis: {
@@ -39,7 +35,7 @@ const PriceChart = () => {
         },
         legend: {
             data: ['当天平均gas费', '当天最大值gas费', '当天最小值gas费'],
-            left: 'left',
+            bottom: '-5px',
         },
         yAxis: {
             type: "value",
@@ -68,12 +64,16 @@ const PriceChart = () => {
 
     return <div style={{
         height: '500px',
+        width: "100%",
         padding: "24px",
         background: '',
         borderRadius: '1rem',
-        border: 'solid 1px'
+        border: 'solid 1px #ebebeb'
     }} >
-        <Row justify='end'>
+        <Row justify='space-between' >
+
+            <div style={{ lineHeight: '28px', height: '24px', fontSize: '18px' }}>ETH的gas历史</div>
+
             <Segmented
                 options={[
                     { label: '一周', value: 7 },
@@ -90,4 +90,4 @@ const PriceChart = () => {
 
 };
 
-export default PriceChart;
+export default GasChart;

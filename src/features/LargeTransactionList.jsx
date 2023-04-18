@@ -3,66 +3,79 @@ import { Table, Tooltip } from 'antd';
 import { format1 } from '../config/time';
 import { getFetcher } from '../config/fetcher';
 import usePaginationSWR from '../hooks/usePaginationSWR';
+import numeral from 'numeral';
 
 const columns = [
   {
-    title: 'Hash地址',
+    title: '交易哈希',
     ellipsis: true,
-    dataIndex: 'hash',
+    dataIndex: 'txid',
     width: 148,
     render: (text) => <Tooltip title={text}>{text}</Tooltip>,
   },
   {
-    title: '区块高度',
+    title: '交易发生的区块',
     ellipsis: true,
     dataIndex: 'height',
     width: 48,
   },
   {
-    title: '区块大小',
+    title: '手续费',
     ellipsis: true,
-    dataIndex: 'blockSize',
+    dataIndex: 'txfee',
     width: 48,
+    render:(text)=>{
+      return numeral(text).format('0.000')
+    }
   },
   {
-    title: '区块奖励',
+    title: '输入',
     ellipsis: true,
-    dataIndex: 'mineReward',
+    dataIndex: 'input',
     width: 48,
+    render: (text) => <Tooltip title={text}>{text}</Tooltip>,
   },
   {
-    title: '交易条数',
+    title: '输出',
     ellipsis: true,
-    dataIndex: 'txnCount',
+    dataIndex: 'output',
     width: 48,
+    render: (text) => <Tooltip title={text}>{text}</Tooltip>,
   },
   {
-    title: '出块时间',
+    title: '交易数量',
+    ellipsis: true,
+    dataIndex: 'amount',
+    width: 48,
+    render:(text)=>{
+      return numeral(text).format('0.000')
+    }
+  },
+  {
+    title: '交易时间',
     key: 'showTime',
-    dataIndex: 'blockTime',
+    dataIndex: 'transactionTime',
     render: (text) => dayjs(text * 1).format(format1),
     width: 88,
   },
 ];
 
-export default function BlockList({ chain }) {
+export default function LargeTransactionList({ chain }) {
   const {
     data, isLoading, currentPage, onPageChange,
   } = usePaginationSWR(
-    '/block/block-list',
+    '/transaction/large-transaction-list',
     (url) => getFetcher(url, {
       chainShortName: 'eth',
     }),
     { refreshInterval: 2000 },
   );
-
   return (
     <Table
-      // title={<>"区块列表"</>}
       loading={isLoading}
       columns={columns}
       rowKey="hash"
-      dataSource={data?.blockList}
+      dataSource={data?.transactionList}
       pagination={{
         current: currentPage,
         pageSize: 20,

@@ -8,10 +8,13 @@ export const useMetaMask = () => {
 
   const detectEthereumProvider = async () => {
     if (!window.ethereum) return null;
-
+    console.log(1222222,provider);
     if (!provider) {
+        console.log(1212);
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
+        setProvider(provider);
+        console.log(provider);
 
         await provider.send("eth_requestAccounts", []);
         const signer = await provider.getSigner();
@@ -21,8 +24,6 @@ export const useMetaMask = () => {
         provider.on("network", (newNetwork) => {
           setNetwork(newNetwork);
         });
-
-        setProvider(provider);
         setSigner(signer);
 
         setAccount({
@@ -47,6 +48,7 @@ export const useMetaMask = () => {
   };
 
   const handleConnectMetaMask = async () => {
+    console.log(111);
     const provider = await detectEthereumProvider();
     if (provider) {
       // 连接成功后的逻辑

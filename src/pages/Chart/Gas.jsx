@@ -1,6 +1,6 @@
 import React from 'react'
-import PriceChart from '../../features/Price'
-function AboutPage() {
+import PriceChart from '../../features/Gas'
+function Gas() {
   return (
     <div>
       <PriceChart></PriceChart>
@@ -8,4 +8,4 @@ function AboutPage() {
   )
 }
 
-export default AboutPage
+export default Gas

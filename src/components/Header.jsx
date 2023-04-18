@@ -1,11 +1,11 @@
 import { Button, Layout, Row, Col } from 'antd';
 import { useMetaMask } from '../hooks/useMetaMask';
 import { formatAddress } from '../config/format';
+import { getNumber } from 'ethers';
 
 const { Header } = Layout;
 
 const headerStyle = {
-    // textAlign: 'center',
     height: '64px',
     paddingInline: 50,
     lineHeight: '64px',
@@ -15,7 +15,10 @@ const headerStyle = {
 
 function MyHeader() {
     const { provider, account, connect, disconnect } = useMetaMask();
-    console.log(provider, account);
+
+    if (account?.balance) {
+        console.log(provider, 1111, getNumber(account?.balance / 1000000000000000000n));
+    }
 
     return (
         <Header style={headerStyle}>
@@ -27,11 +30,11 @@ function MyHeader() {
                 <Col span={2}>
                     {
                         provider ?
-                            <Button onClick={disconnect}>
+                            <Button onClick={() => { disconnect() }}>
                                 {formatAddress(account?.address)}
                             </Button>
                             :
-                            <Button onClick={connect}>
+                            <Button onClick={() => { connect() }}>
                                 {'Connect MetaMask'}
                             </Button>
                     }
