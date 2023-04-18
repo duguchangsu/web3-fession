@@ -1,5 +1,5 @@
 import React from 'react'
-import LargeTransactionList from '../../features/largeTransactionList'
+import LargeTransactionList from '../../features/LargeTransactionList'
 
 function LargeTransaction() {
   return (
