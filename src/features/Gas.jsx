@@ -31,7 +31,7 @@ const GasChart = () => {
         },
         xAxis: {
             type: "category",
-            data: data?.gasHistoryList?.map((d) => dayjs(d.time * 1).format(format2)),
+            data: data?.[0]?.gasHistoryList?.map((d) => dayjs(d.time * 1).format(format2)),
         },
         legend: {
             data: ['当天平均gas费', '当天最大值gas费', '当天最小值gas费'],
@@ -46,17 +46,17 @@ const GasChart = () => {
         series: [
             {
                 name: '当天平均gas费',
-                data: data?.gasHistoryList?.map((d) => d.avgGasPrice),
+                data: data?.[0]?.gasHistoryList?.map((d) => d.avgGasPrice),
                 type: "line",
             },
             {
                 name: '当天最大值gas费',
-                data: data?.gasHistoryList?.map((d) => d.maxGasPrice),
+                data: data?.[0]?.gasHistoryList?.map((d) => d.maxGasPrice),
                 type: "line",
             },
             {
                 name: '当天最小值gas费',
-                data: data?.gasHistoryList?.map((d) => d.minGasPrice),
+                data: data?.[0]?.gasHistoryList?.map((d) => d.minGasPrice),
                 type: "line",
             },
         ],
