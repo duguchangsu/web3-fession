@@ -21,7 +21,6 @@ const GET_TOKENS = gql`
 
 export default function TokensList() {
   const { data, loading, error } = useQuery(GET_TOKENS, { client: uniswapClient });
-  console.log(data);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   return (

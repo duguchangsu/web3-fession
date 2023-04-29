@@ -16,10 +16,6 @@ const headerStyle = {
 function MyHeader() {
     const { provider, account, connect, disconnect } = useMetaMask();
 
-    if (account?.balance) {
-        console.log(provider, 1111, getNumber(account?.balance / 1000000000000000000n));
-    }
-
     return (
         <Header style={headerStyle}>
             <Row justify='space-around'>

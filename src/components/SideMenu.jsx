@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 
 const { SubMenu } = Menu;
 // 将通用的配置项转换为菜单项
-function createMenuItem({ key, label, icon }) {
+function createMenuItem({ key, label, icon,disable }) {
+  if(disable){
+    return 
+  }
   return (
     <Menu.Item key={key} icon={icon} >
       <Link to={key}>{label}</Link>

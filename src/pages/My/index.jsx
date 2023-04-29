@@ -3,7 +3,7 @@ import AccountCard from "../../features/AccountCard";
 
 function My() {
     const { account } = useMetaMask()
-    console.log(account);
+
     return (
         <div>
             <AccountCard account={account}></AccountCard>

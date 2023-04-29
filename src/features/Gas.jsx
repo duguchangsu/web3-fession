@@ -16,8 +16,6 @@ const GasChart = () => {
             chainShortName: 'eth',
         })
     );
-    console.log(data);
-
     const handleClick = (val) => {
         setDate(val)
     }

@@ -6,6 +6,5 @@ export const getFetcher = (url, params) =>
       params,
     })
     .then((res) => {
-      console.log(res);
       return res;
     });

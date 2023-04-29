@@ -1,28 +1,36 @@
 export const routes = [
     {
-        key: '/list',
+        key: '/',
         label: '列表',
         children: [
             {
-                key: '/list/block',
+                key: '',
                 label: '区块列表',
                 component: () => import('../pages/List/Block'),
             },
             {
-                key: '/list/transaction',
+                key: '/transaction',
                 label: '交易列表',
                 component: () => import('../pages/List/transaction'),
             },
             {
-                key: '/list/richAddress',
+                key: '/richAddress',
                 label: '富豪地址',
                 component: () => import('../pages/List/RichAddress'),
+
             },
+
             {
-                key: '/list/largeTransaction',
+                key: '/largeTransaction',
                 label: '大额交易',
                 component: () => import('../pages/List/LargeTransaction'),
-            }
+            },
+            {
+                key: '/transaction/detail',
+                label: '交易详情',
+                component: () => import('../pages/Detail/TransactionDetail'),
+                disable: true
+            },
         ]
     },
     {

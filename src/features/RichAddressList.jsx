@@ -55,7 +55,6 @@ export default function RichAddressList({ chain }) {
         }),
         { refreshInterval: 2000 },
     );
-    console.log(data);
 
     return (
         <Table
