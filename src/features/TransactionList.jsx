@@ -17,7 +17,7 @@ export default function TransactionList({ chain }) {
             dataIndex: 'txid',
             width: 148,
             render: (text, record) => <Tooltip title={text}>
-                <Link to={`/transaction/detail?txid=${record.txid}`}>{text}</Link>
+                <Link to={`/list/transaction/detail?txid=${record.txid}`}>{text}</Link>
             </Tooltip >
         },
         {
@@ -55,10 +55,9 @@ export default function TransactionList({ chain }) {
 
     return (
         <Table
-            // title={<>"区块列表"</>}
             loading={isLoading}
             columns={columns}
-            rowKey="hash"
+            rowKey="txid"
             dataSource={data?.blockList}
             pagination={{
                 current: currentPage,

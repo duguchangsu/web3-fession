@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { Table, Tooltip } from 'antd';
 import { format1 } from '../config/time';
+import { Link } from 'react-router-dom';
 import { getFetcher } from '../config/fetcher';
 import usePaginationSWR from '../hooks/usePaginationSWR';
 import numeral from 'numeral';
@@ -11,7 +12,11 @@ const columns = [
     ellipsis: true,
     dataIndex: 'txid',
     width: 148,
-    render: (text) => <Tooltip title={text}>{text}</Tooltip>,
+    render: (text, record) => <Tooltip title={text}>
+      <Link to={`/list/transaction/detail?txid=${record.txid}`} onClick={() => {
+        console.log(`/transaction/detail?txid=${record.txid}`);
+      }}>{text}</Link>
+    </Tooltip >
   },
   {
     title: '交易发生的区块',
@@ -24,7 +29,7 @@ const columns = [
     ellipsis: true,
     dataIndex: 'txfee',
     width: 48,
-    render:(text)=>{
+    render: (text) => {
       return numeral(text).format('0.000')
     }
   },
@@ -47,7 +52,7 @@ const columns = [
     ellipsis: true,
     dataIndex: 'amount',
     width: 48,
-    render:(text)=>{
+    render: (text) => {
       return numeral(text).format('0.000')
     }
   },
@@ -74,7 +79,7 @@ export default function LargeTransactionList({ chain }) {
     <Table
       loading={isLoading}
       columns={columns}
-      rowKey="hash"
+      rowKey="txid"
       dataSource={data?.transactionList}
       pagination={{
         current: currentPage,

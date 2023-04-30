@@ -1,12 +1,17 @@
 import { useMetaMask } from "../../hooks/useMetaMask"
 import AccountCard from "../../features/AccountCard";
+import Deflation from "../../features/deflation";
+import AddressBalance from "../../features/AddressBalance";
 
 function My() {
     const { account } = useMetaMask()
 
     return (
         <div>
-            <AccountCard account={account}></AccountCard>
+            <AddressBalance />
+            <AccountCard account={account} />
+            <Deflation />
+
         </div>
     )
 }

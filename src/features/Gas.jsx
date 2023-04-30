@@ -70,7 +70,7 @@ const GasChart = () => {
     }} >
         <Row justify='space-between' >
 
-            <div style={{ lineHeight: '28px', height: '24px', fontSize: '18px' }}>ETH的gas历史</div>
+            <div style={{ lineHeight: '28px', height: '24px', fontSize: '18px' }}>Gas费历史</div>
 
             <Segmented
                 options={[

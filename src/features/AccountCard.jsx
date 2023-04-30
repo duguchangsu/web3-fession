@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const titleStyle = { fontSize: '20px', width: "100px", color: "#e3e3e3" }
 
-const container = 'w-1/2 h-80 rounded-lg p-5 border-solid border-1 border-gray-500	bg-gradient-to-r from-sky-500 to-indigo-500'
+const container = 'w-5/5 h-60 rounded-lg p-5 border-solid border-1 border-gray-500	bg-gradient-to-r from-sky-500 to-indigo-500'
 const valueClass = 'text-3xl bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-emerald-50'
 
 function AccountCard({ account }) {
@@ -32,9 +32,9 @@ function AccountCard({ account }) {
             {
                 values.map(item => {
                     return <>
-                        <div style={titleStyle}>余额</div>
+                        <div style={titleStyle}>{item.label}</div>
                         <div className={valueClass}>
-                            {formatEther(balance)}
+                            {item.value}
                         </div>
                     </>
                 })

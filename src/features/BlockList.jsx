@@ -3,14 +3,19 @@ import { Table, Tooltip } from 'antd';
 import { format1 } from '../config/time';
 import { getFetcher } from '../config/fetcher';
 import usePaginationSWR from '../hooks/usePaginationSWR';
+import { Link } from 'react-router-dom';
 
+// /address/detail
 const columns = [
   {
     title: 'Hash地址',
     ellipsis: true,
     dataIndex: 'hash',
     width: 148,
-    render: (text) => <Tooltip title={text}>{text}</Tooltip>,
+    // render: (text) => <Tooltip title={text}>{text}</Tooltip>,
+    render: (text, record) => <Tooltip title={text}>
+      <Link to={`/list/address/detail?address=${record.hash}&height=${record.height}`}>{text}</Link>
+    </Tooltip >
   },
   {
     title: '区块高度',
