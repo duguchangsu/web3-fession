@@ -1,15 +1,17 @@
+import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
-import { Table, Tooltip } from 'antd';
+import { Table, Tooltip, Input } from 'antd';
 import { format1 } from '../config/time';
 import { getFetcher } from '../config/fetcher';
 import { Link, useNavigate } from 'react-router-dom';
 import usePaginationSWR from '../hooks/usePaginationSWR';
+import useSWR from "swr"
 
 
 
 export default function TransactionList({ chain }) {
 
-
+    const [height, setHeight] = useState(17315529)
     const columns = [
         {
             title: '交易Hash',
@@ -42,18 +44,32 @@ export default function TransactionList({ chain }) {
             width: 88,
         },
     ];
+
+    const { data: blockData } = useSWR(`/blockchain/block`, (url) =>
+        getFetcher(url, {
+            chainShortName: 'eth',
+        }),
+        { refreshInterval: 1000 },
+    );
+    // console.log(1111, blockData);
+    useEffect(() => {
+        console.log();
+        setHeight(blockData?.[0]?.lastHeight)
+    }, [blockData])
+
     const {
         data, isLoading, currentPage, onPageChange,
     } = usePaginationSWR(
         '/block/transaction-list',
         (url) => getFetcher(url, {
             chainShortName: 'eth',
-            height: 17074181
+            height
         }),
         { refreshInterval: 2000 },
     );
 
     return (
+
         <Table
             loading={isLoading}
             columns={columns}

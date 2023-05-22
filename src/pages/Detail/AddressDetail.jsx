@@ -29,7 +29,7 @@ function AddressDetail() {
             dataIndex: 'txid',
             width: 100,
             render: (text, record) => <Tooltip title={text}>
-                <Link to={`/transaction/detail?txid=${record.txid}`}>{text}</Link>
+                <Link to={`/list/transaction/detail?txid=${record.txid}`}>{text}</Link>
             </Tooltip >
         },
         {
