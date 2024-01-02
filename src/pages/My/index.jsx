@@ -1,19 +1,18 @@
-import { useMetaMask } from "../../hooks/useMetaMask"
+import { useMetaMask } from "../../hooks/useMetaMask";
 import AccountCard from "../../features/AccountCard";
 import Deflation from "../../features/deflation";
 import AddressBalance from "../../features/AddressBalance";
 
 function My() {
-    const { account } = useMetaMask()
+  //   const { account } = useMetaMask();
 
-    return (
-        <div>
-            <AddressBalance />
+  return (
+    <div>
+      {/* <AddressBalance />
             <AccountCard account={account} />
-            <Deflation />
-
-        </div>
-    )
+            <Deflation /> */}
+    </div>
+  );
 }
 
-export default My
+export default My;
